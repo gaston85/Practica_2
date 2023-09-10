@@ -286,3 +286,53 @@ cuadrado <- c( )
 for (i in 1:length(numeros)) {
   cuadrado[i]<-numeros[i]**2
 }
+#Ejercicio 9??????----
+#Ejercicio 10----
+rm(list = ls())
+x<-as.numeric(readline("Ingrese el valor entre -pi y pi: "))
+precision<-as.numeric(readline("Ingrese la precision deseada: "))
+seno=0
+for (N in 0:precision){
+  seno<-seno+((((-1)**N)*(x**(2*N+1)))/factorial(2*N+1))
+}
+error<-abs(x**(2*N+3))/factorial(2*N+3)
+seno<-seno-error
+sin(x)
+cat("El seno de",x,"es",seno,"con un error de",error)
+#Ejercicio 11----
+rm(list = ls())
+x<-c()
+y<-c()
+for (i in 1:5) { #Genero los vectores x e y
+  x[i]<-as.numeric(readline("Ingrese un valor para x: "))
+  y[i]<-as.numeric(readline("Ingrese un valor para y: "))
+}
+for(i in 1:5){
+  if(x[i]>=0&x[i]<=1){
+    if(y[i]>=0&y[i]<=1){
+      if(sqrt(x[i]**2+y[i]**2)<=2){
+        cat("El punto","(",x[i],y[i],")","esta dentro del triangulo \n")
+      }else{
+        cat("El punto","(",x[i],y[i],")","no esta dentro del triangulo \n")
+      }
+    }else{
+      cat("El punto","(",x[i],y[i],")","no esta dentro del triangulo \n")
+    }
+  }else{
+    cat("El punto","(",x[i],y[i],")","no esta dentro del triangulo \n")
+  }
+}
+#Ejercicio 12----
+rm(list = ls())
+nmax<-as.numeric(readline("Ingrese el maximo numero: "))
+nmin<-as.numeric(readline("Ingrese el minimo numero: "))
+int <-as.numeric(readline("Ingrese el intervalo: "))
+for (i in seq(nmax,nmin)){
+  if(i<0){
+    print("El argumento es negativo")
+    break
+  }else{
+    logaritmo<-log10(i)
+    cat("El logaritmo en base 10 de",i,"es de",logaritmo,"con un intervalo de +-",int,"\n")
+  }
+}
