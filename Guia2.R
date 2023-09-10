@@ -95,4 +95,194 @@ if(A%%B==0){
   cat(A,"no es multiplo de",B)
 }
 #Ejercicio 6----
+rm(list = ls())
+salarioanual<-as.numeric(readline("Ingrese el salario del empleado: "))
+if(salarioanual<6000){
+  print("No paga impuestos")
+}else if(salarioanual>=6000 &salarioanual<20000){
+  impuesto<-0.17*(salarioanual-6000)
+  cat("Paga",paste(impuesto,"u$s",sep = ""),"de impuestos")
+}else if(salarioanual>=20000 &salarioanual<50000){
+  impuesto<-2380+0.3*(salarioanual-20000)
+  cat("Paga",paste(impuesto,"u$s",sep = ""),"de impuestos")
+}else if(salarioanual>=50000 &salarioanual<60000){
+  impuesto<-11380+0.42*(salarioanual-50000)
+  cat("Paga",paste(impuesto,"u$s",sep = ""),"de impuestos")
+}else{
+  impuesto<-15580+0.47*(salarioanual-60000)
+  cat("Paga",paste(impuesto,"u$s",sep = ""),"de impuestos")
+}
 
+
+#Ejercicio 7----
+rm(list = ls())
+
+dia <-as.numeric(readline("Ingrese el dia: "))
+mes <-as.numeric(readline("Ingrese el mes: "))
+anio<-as.numeric(readline("Ingrese el año: "))
+
+#Miro en el mes que ingreso, los ultimos dias
+if(mes==1){
+  if(dia>31){
+    cat("Ingreso una fecha inexistente: ",dia,"de Enero")
+  }else if(dia==31){
+    dia<-1
+    mes<-"Febrero"
+  }else{
+    dia<-dia+1
+    mes<-"Enero"
+  }
+}else if(mes==2){
+  if(anio%%100 ==0){ #modificado para que mire año bisiestos
+    if(dia>28){
+      cat("Ingreso una fecha inexistente: ",dia,"de Febrero")
+    }else if(dia==28){
+      dia<-1
+      mes<-"Marzo"
+      cat("El resultado es: día",dia,"de",mes,"de",anio)
+    }else{
+      dia<-dia+1
+      mes<-"Febrero"
+      cat("El resultado es: día",dia,"de",mes,"de",anio)
+    }
+  }else if (anio%%4==0 | anio%%400==0){
+    if(dia>29){
+      cat("Ingreso una fecha inexistente: ",dia,"de Febrero")
+    }else if(dia==29){
+      dia<-1
+      mes<-"Marzo"
+      cat("El resultado es: día",dia,"de",mes,"de",anio)
+    }else{
+      dia<-dia+1
+      mes<-"Febrero"
+      cat("El resultado es: día",dia,"de",mes,"de",anio)
+    } 
+  }
+}else if(mes==3){
+  if(dia>31){
+    cat("Ingreso una fecha inexistente: ",dia,"de Marzo")
+  }else if(dia==31){
+    dia<-1
+    mes<-"Abril"
+  }else{
+    dia<-dia+1
+    mes<-"Marzo"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==4){
+  if(dia>30){
+    cat("Ingreso una fecha inexistente:",dia,"de Abril")
+  }else if(dia==30){
+    dia<-1
+    mes<-"Mayo"
+  }else{
+    dia<-dia+1
+    mes<-"Abril"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==5){
+  if(dia>31){
+    cat("Ingreso una fecha inexistente: ",dia,"de Mayo")
+  }else if(dia==31){
+    dia<-1
+    mes<-"Junio"
+  }else{
+    dia<-dia+1
+    mes<-"Mayo"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==6){
+  if(dia>30){
+    cat("Ingreso una fecha inexistente: ",dia,"de Junio")
+  }else if(dia==30){
+    dia<-1
+    mes<-"Julio"
+  }else{
+    dia<-dia+1
+    mes<-"Junio"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==7){
+  if(dia>31){
+    cat("Ingreso una fecha inexistente: ",dia,"de Julio")
+  }else if(dia==31){
+    dia<-1
+    mes<-"Agosto"
+  }else{
+    dia<-dia+1
+    mes<-"Julio"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==8){
+  if(dia>31){
+    cat("Ingreso una fecha inexistente: ",dia,"de Agosto")
+  }else if(dia==31){
+    dia<-1
+    mes<-"Septiembre"
+  }else{
+    dia<-dia+1
+    mes<-"Agosto"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==9){
+  if(dia>30){
+    cat("Ingreso una fecha inexistente: ",dia,"de Septiembre")
+  }else if(dia==30){
+    dia<-1
+    mes<-"Octubre"
+  }else{
+    dia<-dia+1
+    mes<-"Septiembre"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==10){
+  if(dia>31){
+    cat("Ingreso una fecha inexistente: ",dia,"de Octubre")
+  }else if(dia==31){
+    dia<-1
+    mes<-"Noviembre"
+  }else{
+    dia<-dia+1
+    mes<-"Octubre"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==11){
+  if(dia>30){
+    cat("Ingreso una fecha inexistente: ",dia,"de Noviembre")
+  }else if(dia==30){
+    dia<-1
+    mes<-"Diciembre"
+  }else{
+    dia<-dia+1
+    mes<-"Noviembre"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else if(mes==12){
+  if(dia>31){
+    cat("Ingreso una fecha inexistente: ",dia,"de Diciembre")
+  }else if(dia==31){
+    dia<-1
+    mes<-"Enero"
+    anio<-anio+1
+  }else{
+    dia<-dia+1
+    mes<-"Diciembre"
+    cat("El resultado es: día",dia,"de",mes,"de",anio)
+  }
+}else{
+  cat("Ingreso un mes erroneo",mes)
+}
+#Ejercicio 8----
+rm(list = ls())
+numeros<-seq(1,by=1,length.out=10)
+cuadrado <- c( )
+for (i in numeros) {
+  cuadrado[i]<-i**2
+}
+#b
+rm(list = ls())
+numeros<-seq(2,by=2,length.out=1000)
+cuadrado <- c( )
+for (i in 1:length(numeros)) {
+  cuadrado[i]<-numeros[i]**2
+}
