@@ -327,12 +327,76 @@ rm(list = ls())
 nmax<-as.numeric(readline("Ingrese el maximo numero: "))
 nmin<-as.numeric(readline("Ingrese el minimo numero: "))
 int <-as.numeric(readline("Ingrese el intervalo: "))
-for (i in seq(nmax,nmin)){
+for (i in seq(nmax,nmin,by=-int)){
   if(i<0){
     print("El argumento es negativo")
     break
   }else{
     logaritmo<-log10(i)
-    cat("El logaritmo en base 10 de",i,"es de",logaritmo,"con un intervalo de +-",int,"\n")
+    cat("El logaritmo en base 10 de",i,"es de",logaritmo,"\n")
   }
 }
+
+numeros<-seq(nmax,nmin,by=-int)
+i<-1
+while (numeros[i]>=0) {
+  logaritmo<-log10(i)
+  cat("El logaritmo en base 10 de",numeros[i],"es de",logaritmo,"\n")
+  i<-i+1
+}
+print("El argumento es negativo, no se puede seguir calculando")
+#Ejercicio 13----
+meses<-1
+densidad<-as.numeric(readline("Ingrese la densidad inicial: "))
+muestras<-as.numeric(readline("Ingrese la cantidad de años de estudio: "))
+muestras<-12*muestras
+for (i in 1:muestras) {
+  densidad<-3.75*densidad*(1-densidad)
+  if(meses%%3==0){
+    cat("La densidad de monos es de", densidad, "monos por hectarea en el mes",meses,"\n")
+  }
+  meses=meses+1
+}
+#Ejercicio 14----
+rm(list = ls())
+N<-as.numeric(readline("Cuantos valores introducira? "))
+numeros<-c()
+for (i in 1:N) {
+  numeros[i]<-as.numeric(readline("Ingrese un valor: "))
+}
+cat("La media de los valores es:",mean(numeros))
+cat("El desvio estandar de los valores es:",sd(numeros))
+#Ejercicio 15----
+rm(list = ls())
+#Pido los datos del estudiante
+nombre<-readline("Ingrese su nombre: ") 
+apellido<-readline("Ingrese su apellido: ")
+mat_ap<-as.numeric(readline("Cuantas materias aprobo? "))
+
+#Verifico que las materias aprobadas sean un numero
+while (is.na(materias)==T) {
+  mat_ap<-as.numeric(readline("Las materias aprobadas ingresadas no son un numero, intentelo otra vez: "))
+}
+
+#Pregunto por las materias aprobadas y sus respectivas notas, si es que aprobo
+materias<-c()
+notas<-c()
+if(mat_ap==0){
+  print(paste("El alumno",nombre,apellido,"no aprobo materias"),quote=F)
+}else{
+  for (i in 1:mat_ap) {
+    materias[i]<-readline("Qué materias aprobo? ")
+    notas[i]<-as.numeric(readline("Con qué nota la aprobo? "))
+    while(is.na(notas[i])==T){ #Verifico que la nota de la materia sea un numero
+      notas[i]<-as.numeric(readline("La nota ingresada no es un numero, ingrese otra vez la nota con la que aprobo: "))
+    }
+  }
+  if(mean(notas)>8.41){
+    print(paste("El estudiante",nombre,apellido,"aprobo", mat_ap, "materias y su promedio es mayor al promedio histórico"),quote=F)
+  }else if(mean(notas)==8.41){
+    print(paste("El estudiante",nombre,apellido,"aprobo", mat_ap, "materias y su promedio es igual al promedio histórico"),quote=F)
+  }else{
+    print(paste("El estudiante",nombre,apellido,"aprobo", mat_ap, "materias y su promedio es menor al promedio histórico"),quote=F)
+  }
+}
+
