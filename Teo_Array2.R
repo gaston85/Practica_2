@@ -64,25 +64,39 @@ U[upper.tri(B,diag=TRUE)]=10
 
 M=B
 M[upper.tri(B,diag=TRUE)]->pp
-####################################
+##############Media y desvío######################
 
 a<-matrix(c(1,1,1,2,2,2,3,3,3,4,4,4),nrow=3,ncol=4)
 mean(a)
 
 colMeans(a,dims=1)		
-rowMeans(a,dims=1)	
+rowMeans(a,dims=1)
 
-
+require(abind)
 b<-matrix(c(4,4,4,5,5,5,6,6,6,7,7,7),nrow=3,ncol=4)
-c=abind(a,b,along=3)
-media_1<-apply(c,c(1,3),mean)
-media_2<-apply(c,c(2,3),mean)
-media_3<-apply(c,c(1,2),mean)
+c=abind(a,b,along=3) #dim=(3,4,2)
 
-desvio_1<-apply(c,c(1,3),sd)
+media_1<-apply(c,c(1,3),mean) #Para cada fila y cada tiempo promedio las columnas
+media_2<-apply(c,c(2,3),mean) 
+media_3<-apply(c,c(1,2),mean) 
+
+desvio_1<-apply(c,c(1,3),sd) 
 desvio_2<-apply(c,c(2,3),sd)
 desvio_3<-apply(c,c(1,2),sd)
 
 #############################################
 
 ## ejemplo de datos de pp en clase
+DATA<-"/home/clinux01/gaston/Practica_2/"
+datos<-read.table(paste(DATA,"juntas_1960-2018.txt",sep=""),header = T,sep="",fill = T)
+#header: encabezados, si quiero que los ponga
+datos[datos==-99.9]<-NA #los valores de datos quesean iguales a ese numero, sean NA
+
+read <- read.table("juntas_1960-2018.txt") #El archivo tiene que estar en el wd
+dim(datos)
+
+anual<-datos[,"posadas"]
+ppxanio<-array(anual,dim = c(365,40))
+ppxanio
+acu_anual<-colSums(ppxanio,na.rm = T)
+acu_anual
